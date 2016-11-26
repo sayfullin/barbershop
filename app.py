@@ -68,7 +68,7 @@ def get_barbershop_all_data():
                 'name': haircut_type.name,
                 'price': haircut_type.price
             })
-        to_json.append{
+        to_json.append({
             'id': barbershop.id,
             'name': barbershop.name,
             'phone_number': barbershop.phone_number,
@@ -81,7 +81,7 @@ def get_barbershop_all_data():
             'saloon_type': barbershop.saloon_type,
             'photos': photos_to_json,
             'haircut_types': haircut_type_to_json,
-        }
+        })
     return jsonify(to_json)
 
 @app.route('/api/barbershops/map_list/')
