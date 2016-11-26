@@ -145,6 +145,7 @@
 }
 
 #b-info-cont .item .item-info p {
+  clear: left;
   float: left;
   margin-left: 20px;
   color: #757575;
