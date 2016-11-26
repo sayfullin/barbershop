@@ -7,3 +7,4 @@ MarkupSafe==0.23
 #pkg-resources
 SQLAlchemy==1.1.4
 Werkzeug==0.11.11
+gunicorn==19.6.0
