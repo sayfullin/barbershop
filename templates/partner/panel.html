@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="">
+	<meta name="Keywords" content="">
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="	{{ url_for('static', filename='css/fonts.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/reset.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/slick.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/media.css')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>Панель партнера</title>
+</head>
+<body>
+	<div id="header">
+		<a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
+		<div>
+			<h1>{{barbershop.name}}</h1>
+			<p>{{barbershop.saloon_type}}</p>
+		</div>
+	</div>
+	<div id="sidebar">
+		<ul>
+			<li></li>
+			<li><a id="profile-link" class="active" href="javascript:void(0);"><img src="{{ url_for('static', filename='images/purchase.png')}}" alt=""><p>Заявки</p></a></li>
+			<li><a id="settings-link" href="javascript:void(0);"><img src="{{ url_for('static', filename='images/settings.png')}}" alt=""><p>Профиль</p></a></li>
+		</ul>
+	</div>
+
+	<div id="container">
+		<div id="profile">
+      {% for booking in barbershop.bookings%}
+			<div class="order-item ojd">
+				<div class="person">
+					<p class="name">{{booking.client_name}}</p>
+					<p class="phone">{{booking.client_phone}}</p>
+				</div>
+				<div class="serv">
+					<p class="datetime"><span class="date">{{booking.time_to.strftime('%h-%d')}}</span> <span class="time">{{booking.time_to.strftime('%H:%M')}}</span></p>
+					<p class="serv-type">Undercut+борода</p>
+				</div>
+				<div class="status-cnt">
+          {% if not booking.closed %}
+					    <p class="status ojd">Ожидается</p>
+     					<p class="br-from">Бронь от <span class="date">{{booking.created_at.strftime('%d.%H.%Y')}}</span> <span class="time">{{booking.time_to.strftime('%H:%M')}}</span></p>
+     					<form action="{{url_for('close_booking')}}" method="post">
+                <input type="hidden" name="id" value="{{booking.id}}">
+                <input class='close' type="submit" value="закрыть бронь">
+              </form>
+          {% else %}
+    					<p class="status obr">Обработан</p>
+    					<p class="br-from">Бронь от <span class="date">26.11.2016</span> <span class="time">13:11</span></p>
+          {% endif %}
+				</div>
+			</div>
+      {% endfor %}
+		</div>
+
+		<div id="settings" style="display:none;">
+			<h2>Фотографии</h2>
+			<div id="photos-cnt">
+				<p>Добавьте фотографии вашего барбершопа</p>
+
+        {% for photo in barbershop.photos%}
+  				<div>
+  					<img src="{{ url_for('static', filename=photo.url)}}" alt="">
+  				</div>
+        {% endfor %}
+				<div class="add-new">
+					<a href="javascript:void(0);">
+						<img src="{{ url_for('static', filename='images/add.png')}}" alt="">
+					</a>
+				</div>
+			</div>
+			<h2>Описание</h2>
+			<div id="info-cnt">
+				<p>Расскажите о вашем салоне</p>
+				<form action="">
+					<textarea name="bb-info"></textarea>
+					<input type="button" value="Сохранить">
+				</form>
+			</div>
+			<h2>Стрижки</h2>
+			<div id="bb-style-cnt">
+				<p>Добавьте стрижки и их стоимость</p>
+				<div>
+					<pre class="name">Undercut</pre>
+					<pre class="price"><span>400</span> Руб</pre>
+					<pre class="time"><span>60</span> минут</pre>
+				</div>
+				<div class="add-new">
+					<a href="javascript:void(0)"><i>Добавить</i></a>
+				</div>
+				<form action="">
+					<input type="text" placeholder="Введите название">
+					<input type="text" placeholder="Стоимость">
+					<input type="text" placeholder="Время">
+					<input type="button" value="Сохранить">
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="{{ url_for('static', filename='js/scripts.js')}}" type="text/javascript"></script>
+</body>
+</html>

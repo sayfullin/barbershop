@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/fonts.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/reset.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/slick.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/media.css')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>Бронирование времени</title>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="b-info-cont">
+		<div id="main">
+			<h2>Парикмахерские в Уфе</h2>
+			<div id="sort"><p>Сортировать:</p><a href="javascript:void(0);">По цене</a><a href="javascript:void(0);">По популярности</a><a href="javascript:void(0);">По рейтингу</a></div>
+			<div id="container2">
+
+			</div>
+			<div id="footer">
+				<div id="pager">
+					<a class="dis" href="javascript:void(0);">Назад</a>
+					<a href="javascript:void(0);">След</a><br>
+					<a class="active" href="javascript:void(0);">1</a>
+					<a href="javascript:void(0);">2</a>
+					<a href="javascript:void(0);">3</a>
+				</div>
+				<div id="menu">
+					<a href="javascript:void(0)">Главная</a>
+					<a href="/sign-up">Вход для партнеров</a>
+					<a href="javascript:void(0)">О проекте</a>
+					<a href="javascript:void(0)">Контакты</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="barber-info" style="display:none;">
+			<div id="barber-info-cnt">
+				<a id="close" href="javascript:void(0);"><i></i>Вернуться к результатам поиска</a>
+				<div id="barber-info-container">
+					<pre>улица Менделеева 152 А</pre>
+					<h4>Chop Chop Barbershop</h4>
+					<p class="barber-type">Мужской салон</p>
+					<div id="barber-photo-slider">
+
+					</div>
+					<h5>О парикмахерской</h5>
+					<p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<div id="stars"><p>Рейтинг: <span>4,67</span></p></div>
+					<div id="bs-choose-style">
+						<h5>Выберите стрижку</h5>
+						<div class="bs-type">
+							<h6>Undercut</h6>
+							<p class="price"><span>400</span> Руб</p>
+							<p class="time"><span>60</span> минут</p>
+						</div>
+					</div>
+				</div>
+				<div id="menu">
+					<a href="javascript:void(0)">Главная</a>
+					<a href="/sign-up">Вход для партнеров</a>
+					<a href="javascript:void(0)">О проекте</a>
+					<a href="javascript:void(0)">Контакты</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="barber-choose-time" style="display:none;">
+			<div id="barber-choose-time-cnt">
+				<a id="close" href="javascript:void(0);"><i></i>Вернуться к выбору стрижки</a>
+				<div id="barber-choose-time-container">
+					<h4>Выберите удобное для вас время</h4>
+					<div id="date-slider">
+						<a class="date-slide">
+							<span>СБ</span>
+							<p>27 ноября</p>
+						</a>
+						<a class="date-slide">
+							<span>ВС</span>
+							<p>28 ноября</p>
+						</a>
+						<a class="date-slide">
+							<span>ПН</span>
+							<p>29 ноября</p>
+						</a>
+						<a class="date-slide">
+							<span>ВТ</span>
+							<p>30 ноября</p>
+						</a>
+						<a class="date-slide">
+							<span>СР</span>
+							<p>1 декабря</p>
+						</a>
+						<a class="date-slide">
+							<span>ЧТ</span>
+							<p>2 декабря</p>
+						</a>
+						<a class="date-slide">
+							<span>ПТ</span>
+							<p>3 декабря</p>
+						</a>
+						<a class="date-slide">
+							<span>СБ</span>
+							<p>4 декабря</p>
+						</a>
+						<a class="date-slide">
+							<span>ВС</span>
+							<p>5 декабря</p>
+						</a>
+					</div>
+					<div id="time-container">
+						<div class="time-item-cnt">
+							<h5>Утром</h5>
+							<div class="time-item">10:00</div>
+							<div class="time-item">10:30</div>
+							<div class="time-item">11:00</div>
+							<div class="time-item">11:30</div>
+						</div>
+						<div class="time-item-cnt">
+							<h5>Днём</h5>
+							<div class="time-item">12:00</div>
+							<div class="time-item">12:30</div>
+							<div class="time-item">13:00</div>
+							<div class="time-item">13:30</div>
+							<div class="time-item">14:00</div>
+							<div class="time-item">14:30</div>
+							<div class="time-item">15:00</div>
+							<div class="time-item">15:30</div>
+							<div class="time-item">16:00</div>
+							<div class="time-item">17:00</div>
+						</div>
+						<div class="time-item-cnt">
+							<h5>Вечером</h5>
+							<div class="time-item">18:00</div>
+							<div class="time-item">19:30</div>
+						</div>
+					</div>
+					<a href="javascript:void(0);" id="ok" class="disable">Отправить</a>
+				</div>
+				<div id="menu">
+					<a href="javascript:void(0)">Главная</a>
+					<a href="/sign-up">Вход для партнеров</a>
+					<a href="javascript:void(0)">О проекте</a>
+					<a href="javascript:void(0)">Контакты</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="booking" style="display:none;">
+			<div id="booking-cnt">
+				<a id="close" href="javascript:void(0);"><i></i>Вернуться к выбору времени бронирования</a>
+				<div id="booking-container">
+					<h4>Бронирование</h4>
+					<form action="" method="post">
+						<input type="text" name="name" placeholder="Как вас зовут?">
+						<input type="text" name="phone" placeholder="Телефон">
+						<input class="vis" type="button" value="Забронировать и оплатить" onclick="Send();">
+						<input class="invis" type="button" value="Забронировать без оплаты" onclick="Send();">
+						<input type="hidden" name="time">
+						<input type="hidden" name="date">
+						<input type="hidden" name="price">
+						<input type="hidden" name="bbName">
+						<input type="hidden" name="bbShop">
+					</form>
+					<div id="booking-info">
+						<p class="bb-name">Chop Chop Barbershop</p>
+						<p class="bb-info">Undercut+Дизайн</p>
+						<p class="bb-date"><span>26 Ноября</span> <i>15:30</i></p>
+						<p class="bb-price">Стоимость <span>800</span> Руб</p>
+					</div>
+				</div>
+				<div id="menu">
+					<a href="javascript:void(0)">Главная</a>
+					<a href="/sign-up">Вход для партнеров</a>
+					<a href="javascript:void(0)">О проекте</a>
+					<a href="javascript:void(0)">Контакты</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAIJ431dMxPtVaBZofyO-CHsIXLGFkL4O0"></script>
+	<script src="{{ url_for('static', filename='js/slick.min.js')}}" type="text/javascript"></script>
+	<script src="{{ url_for('static', filename='js/script.js')}}" type="text/javascript"></script>
+</body>
+</html>

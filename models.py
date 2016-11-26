@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean
 from sqlalchemy import ForeignKey
 from database import Base
 
@@ -81,3 +81,8 @@ class Booking(Base):
     time_to = Column(DateTime)
     created_at = Column(DateTime)
     client_name = Column(String)
+    client_phone = Column(String)
+    closed = Column(Boolean)
+
+    def __repr__(self):
+       return "<Booking('%s')>" % (self.client_phone)

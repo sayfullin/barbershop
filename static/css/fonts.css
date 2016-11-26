@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?v9n0eg');
+  src:  url('../fonts/icomoon.eot?v9n0eg#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?v9n0eg') format('truetype'),
+    url('../fonts/icomoon.woff?v9n0eg') format('woff'),
+    url('../fonts/icomoon.svg?v9n0eg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-VKontakte:before {
+  content: "\e900";
+}
+.icon-Facebook:before {
+  content: "\e901";
+}
+.icon-Instagram:before {
+  content: "\e902";
+}
+
+@font-face {
+  font-family: 'PTSerifItalic';
+  src: url('../fonts/PTF56F_W.eot');
+  src:
+       url('../fonts/PTF56F_W.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/PTF56F_W.woff') format('woff'),
+       url('../fonts/PTF56F_W.ttf') format('truetype'),
+       url('../fonts/PTF56F_W.svg#PTSerif-Italic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SF-UI-Text-Medium;
+  src: url(../fonts/SF-UI-Text-Medium.ttf);
+}
+
+@font-face {
+  font-family: SF-UI-Text-Regular;
+  src: url(../fonts/SF-UI-Text-Regular.ttf);
+}
+
+@font-face {
+  font-family: SF-UI-Text-Semibold;
+  src: url(../fonts/SF-UI-Text-Semibold.ttf);
+}
+
+@font-face {
+  font-family: SF-UI-Text-Light;
+  src: url(../fonts/SF-UI-Text-Light.ttf);
+}
+
+/*@font-face {
+  font-family: SF-UI-Display-Light;
+  src: url(../fonts/SF-UI-Display-Light.ttf);
+}*/
+
+@font-face {
+  font-family: SF-UI-Display-Regular;
+  src: url(../fonts/SF-UI-Display-Regular.ttf);
+}
+
+@font-face {
+  font-family: SF-UI-Display-Medium;
+  src: url(../fonts/SF-UI-Display-Medium.ttf);
+}
+
+@font-face {
+  font-family: AdelleCyrillicSemiBold;
+  src: url(../fonts/AdelleCyrillicSemiBold.ttf);
+}
+
+@font-face {
+  font-family: AdelleCyrillicRegular;
+  src: url(../fonts/AdelleCyrillicRegular.ttf);
+}

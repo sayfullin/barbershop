@@ -1,7 +1,7 @@
 from database import Base, db_session, engine
 
 import models
-from models import Barbershop, BarbershopPhoto, HaircutType, BarbershopUser
+from models import Barbershop, BarbershopPhoto, HaircutType, BarbershopUser, Booking
 Base.metadata.create_all(bind=engine)
 
 barbershop = Barbershop('Ляйсан')
@@ -127,5 +127,44 @@ barbershops[2].latitude = 54.7257102
 barbershops[2].longitude = 55.9458011
 barbershops[3].latitude = 54.7219511
 barbershops[3].longitude = 55.9396386
+
+db_session.commit()
+
+import datetime
+booking = Booking()
+booking.barbershop_id = 1;
+booking.created_at = datetime.datetime.now()
+booking.time_to = datetime.datetime.now() + datetime.timedelta(days=1)
+booking.client_name = 'Владимир'
+booking.client_phone = '+7 937 306 76 19'
+booking.closed = True
+db_session.add(booking)
+
+booking = Booking()
+booking.barbershop_id = 1;
+booking.created_at = datetime.datetime.now()
+booking.time_to = datetime.datetime.now() + datetime.timedelta(hours = 20)
+booking.client_name = 'Ильяс'
+booking.client_phone = '+7 937 306 76 19'
+booking.closed = True
+db_session.add(booking)
+
+booking = Booking()
+booking.barbershop_id = 1;
+booking.created_at = datetime.datetime.now()
+booking.time_to = datetime.datetime.now() + datetime.timedelta(days=1, hours=2)
+booking.client_name = 'Ильнар'
+booking.client_phone = '+7 937 306 76 19'
+booking.closed = False
+db_session.add(booking)
+
+booking = Booking()
+booking.barbershop_id = 1;
+booking.created_at = datetime.datetime.now()
+booking.time_to = datetime.datetime.now() + datetime.timedelta(days=1, hours=1)
+booking.client_name = 'Игорь'
+booking.client_phone = '+7 927 305 75 18'
+booking.closed = False
+db_session.add(booking)
 
 db_session.commit()

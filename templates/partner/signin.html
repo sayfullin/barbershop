@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="">
+	<meta name="Keywords" content="">
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/fonts.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/reset.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/slick.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/media.css')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>Вход в панель</title>
+</head>
+<body>
+	<div id="sign-in">
+		<a id="logo" href="/">
+			<img src="../images/logo-blue.png" alt="">
+			<p>Название проекта</p>
+		</a>
+		<h1>Вход в панель управления</h1>
+		<form action="{{url_for('partner_login')}}" method="post">
+			<input type="text" name='login' placeholder="E-mail">
+			<input type="password" name='password' placeholder="Пароль">
+			<input type="submit" value="Войти">
+		</form>
+		<div id="sign-footer">
+			<div id="menu">
+				<a href="javascript:void(0)">Главная</a>
+				<a href="javascript:void(0)">Вход для партнеров</a>
+				<a href="javascript:void(0)">О проекте</a>
+				<a href="javascript:void(0)">Контакты</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</body>
+</html>

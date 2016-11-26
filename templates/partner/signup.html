@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="">
+	<meta name="Keywords" content="">
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/fonts.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/reset.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/slick.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" href="	{{ url_for('static', filename='css/media.css')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>Регистрация барбершопа</title>
+</head>
+<body>
+	<section>
+		<a id="logo" href="/">
+			<img src="{{ url_for('static', filename='../images/logo.png')}}" alt="">
+			<p>Название проекта</p>
+		</a>
+		<h1>Поднимите стандарты</h1>
+		<p class="lt">Создайте страницу вашего барбершопа на нашем сервисе</p>
+		<p class="lr">Наш сервис предложит вам лучшие варианты основанные на вашем местоположении или других критериях.</p>
+		<a id="reg" href="javascript:void(0);">Зарегистрироать Барбершоп</a>
+		<a id="vv" href="{{url_for('partner_singin')}}">Вход в панель управления</a>
+	</section>
+	<div id="sign-up">
+		<h2>Регистрация</h2>
+		<form action="">
+			<input type="text" name="name" placeholder="Как вас зовут?">
+			<input type="text" name="phone" placeholder="Телефон">
+			<input type="text" name="email" placeholder="E-mail">
+			<p>Информация о барбершопе</p>
+			<div class="left"><i>Я одиночка</i></div>
+			<div class="right">Я владелец Барбершопа</div>
+			<input type="hidden">
+			<input type="text" placeholder="Название барбершопа">
+			<input type="text" placeholder="Адрес барбершопа">
+			<input type="button" value="Зарегистрироваться">
+		</form>
+	</div>
+	<div id="sign-footer">
+		<a id="logo" href="/">
+			<img src="../images/logo-blue.png" alt="">
+			<p>Название проекта</p>
+		</a>
+		<div id="menu">
+			<a href="javascript:void(0)">Главная</a>
+			<a href="javascript:void(0)">Вход для партнеров</a>
+			<a href="javascript:void(0)">О проекте</a>
+			<a href="javascript:void(0)">Контакты</a>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script>
+	$('#sign-up form div').click(function() {
+        $('#sign-up form div').removeClass('active');
+        $(this).addClass('active');
+        var qq = $(this).text();
+        $('#sign-up form input[type="hidden"]').val(qq);
+    });
+    </script>
+</body>
+</html>

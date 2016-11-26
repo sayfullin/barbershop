@@ -2,8 +2,9 @@ from flask import Flask, render_template, jsonify, session, redirect, url_for
 from flask import request
 
 import os
+import datetime
 
-from models import Barbershop, BarbershopPhoto, HaircutType, BarbershopUser
+from models import Barbershop, BarbershopPhoto, HaircutType, BarbershopUser, Booking
 from database import db_session
 
 app = Flask(__name__)
@@ -28,7 +29,9 @@ def partner_singin():
 @app.route('/partner/panel/')
 def partner_panel():
     if 'barbershop_id' in session:
-        barbershop = db_session.query(Barbershop).get(session['barbershop_id'])
+        barbershop =get_barbershop_by_id(session['barbershop_id'])
+        bookings = Booking.query.filter_by(barbershop_id=barbershop['id']).all()
+        barbershop['bookings'] = bookings
         return render_template('partner/panel.html', barbershop= barbershop)
     else:
         return redirect(url_for('partner_singin'))
@@ -48,6 +51,28 @@ def partner_login():
         return redirect(url_for('partner_singin'))
 
 
+@app.route('/api/barbershops/booking/add/', methods=['POST'])
+def add_booking():
+    booking = Booking()
+    booking.client_name = request.form['name']
+    booking.client_phone = request.form['phone']
+    booking.created_at = datetime.datetime.now()
+    booking.time_to = datetime.datetime.now() + datetime.timedelta(hours=2)
+    booking.closed = False
+    booking.barbershop_id = request.form['bbShop']
+    db_session.add(booking)
+    db_session.commit()
+    return 'ok'
+
+
+@app.route('/api/barbershops/booking/close/', methods=['POST'])
+def close_booking():
+    id = request.form['id']
+    booking = db_session.query(Booking).get(id)
+    booking.closed = True
+    print(booking.id, booking.closed )
+    db_session.commit()
+    return redirect(url_for('partner_panel'))
 
 @app.route('/api/barbershops/all_data/')
 def get_barbershop_all_data():
@@ -98,10 +123,20 @@ def get_barbershop_map_list():
 
 @app.route('/api/barbershops/<int:id>/')
 def get_barbershop_info(id):
+    to_json = get_barbershop_by_id(id)
+
+    return jsonify(to_json)
+
+
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+
+
+def get_barbershop_by_id(id):
     barbershop = db_session.query(Barbershop).get(id)
     photos = BarbershopPhoto.query.filter_by(barbershop_id=id).all()
     haircut_types = HaircutType.query.filter_by(barbershop_id=id).all()
-
     photos_to_json = []
     for photo in photos:
         photos_to_json.append({
@@ -113,7 +148,7 @@ def get_barbershop_info(id):
             'name': haircut_type.name,
             'price': haircut_type.price
         })
-    to_json = {
+    obj = {
         'id': barbershop.id,
         'name': barbershop.name,
         'phone_number': barbershop.phone_number,
@@ -127,10 +162,4 @@ def get_barbershop_info(id):
         'photos': photos_to_json,
         'haircut_types': haircut_type_to_json,
     }
-
-    return jsonify(to_json)
-
-
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    return obj
