@@ -13,6 +13,9 @@
 </head>
 <body>
 	<div id="map"></div>
+	<form id="search-form" action="" method="post">
+		<input type="text" placeholder="Поиск"><i></i>
+	</form>
 	<div id="b-info-cont">
 		<div id="main">
 			<h2>Парикмахерские в Уфе</h2>
@@ -157,6 +160,9 @@
 					<form action="" method="post">
 						<input type="text" name="name" placeholder="Как вас зовут?">
 						<input type="text" name="phone" placeholder="Телефон">
+						<input type="text" placeholder="Номер карты">
+						<input type="text"  placeholder="cvc">
+						<input type="text"  placeholder="Срок годности">
 						<input class="vis" type="button" value="Забронировать и оплатить" onclick="Send();">
 						<input class="invis" type="button" value="Забронировать без оплаты" onclick="Send();">
 						<input type="hidden" name="time">
