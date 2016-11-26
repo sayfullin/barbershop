@@ -128,11 +128,6 @@ def get_barbershop_info(id):
     return jsonify(to_json)
 
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-
-
 def get_barbershop_by_id(id):
     barbershop = db_session.query(Barbershop).get(id)
     photos = BarbershopPhoto.query.filter_by(barbershop_id=id).all()
@@ -163,3 +158,8 @@ def get_barbershop_by_id(id):
         'haircut_types': haircut_type_to_json,
     }
     return obj
+
+
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
