@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy import ForeignKey
 from database import Base
 
@@ -31,6 +31,11 @@ class BarbershopUser(Base):
     name = Column(String)
     password = Column(String)
     barbershop_id = Column(Integer, ForeignKey('barbershops.id'))
+
+    def __init__(self, barbershop_id, username, password):
+        self.barbershop_id = barbershop_id
+        self.username = username
+        self.password = password
 
     def __repr__(self):
        return "<BarbershopStaff('%s')>" % (self.username)
@@ -67,3 +72,12 @@ class BarbershopPhoto(Base):
 
     def __repr__(self):
        return "<BarbershopPhoto('%s')>" % (self.file_path)
+
+
+class Booking(Base):
+    __tablename__= 'booking'
+    id = Column(Integer, primary_key=True)
+    barbershop_id = Column(Integer, ForeignKey('barbershops.id'))
+    time_to = Column(DateTime)
+    created_at = Column(DateTime)
+    client_name = Column(String)

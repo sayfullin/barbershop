@@ -1,7 +1,7 @@
-from database import Base, db_session
+from database import Base, db_session, engine
 
 import models
-from models import Barbershop, BarbershopPhoto, HaircutType
+from models import Barbershop, BarbershopPhoto, HaircutType, BarbershopUser
 Base.metadata.create_all(bind=engine)
 
 barbershop = Barbershop('Ляйсан')
@@ -16,6 +16,9 @@ barbershop.stars = 4.5
 barbershop.address = 'Кувыкино, 16'
 barbershop.saloon_type = 'Мужской салон'
 db_session.commit()
+
+barbershop_user = BarbershopUser(1, 'marat', '123456')
+db_session.add(barbershop_user)
 
 barbershop_photo = BarbershopPhoto(1, 'media/barbershop_photos/1/1.jpg')
 db_session.add(barbershop_photo)
@@ -112,5 +115,17 @@ haircut_type = HaircutType(4, 'романтический', 400)
 db_session.add(haircut_type)
 haircut_type = HaircutType(4, 'шапочка', 500)
 db_session.add(haircut_type)
+
+db_session.commit()
+
+barbershops = Barbershop.query.all()
+barbershops[0].latitude = 54.734716
+barbershops[0].longitude = 55.9646805
+barbershops[1].latitude = 54.7330351
+barbershops[1].longitude = 55.9536999
+barbershops[2].latitude = 54.7257102
+barbershops[2].longitude = 55.9458011
+barbershops[3].latitude = 54.7219511
+barbershops[3].longitude = 55.9396386
 
 db_session.commit()
