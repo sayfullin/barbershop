@@ -10,12 +10,6 @@ from database import db_session
 app = Flask(__name__)
 
 from flask import send_from_directory
-"""
-@app.route('/static/<path:filename>')
-def serve_static(filename):
-    root_dir = os.path.dirname(os.getcwd())
-    return send_from_directory(os.path.join(root_dir, 'static'), filename)
-"""
 
 @app.route('/api/barbershops/map_list/')
 def get_barbershop_map_list():
